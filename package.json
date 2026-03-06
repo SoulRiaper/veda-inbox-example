@@ -1,0 +1,22 @@
+{
+  "name": "veda-workflow-manager",
+  "version": "1.0.0",
+  "description": "Workflow designer and process manager for Veda platform",
+  "type": "module",
+  "scripts": {
+    "build": "node build.mjs",
+    "watch": "node watch.mjs",
+    "test": "node --expose-gc test",
+    "test:unit": "node --expose-gc test --unit",
+    "test:integration": "node --expose-gc test --integration"
+  },
+  "dependencies": {
+    "synesthesia-editor": "^1.0.2",
+    "veda-client": "github:semantic-machines/veda-client"
+  },
+  "devDependencies": {
+    "baretest": "^2.0.0",
+    "esbuild": "^0.24.2",
+    "jsdom": "^27.4.0"
+  }
+}
