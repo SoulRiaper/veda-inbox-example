@@ -1,7 +1,7 @@
 {
-  "name": "veda-workflow-manager",
+  "name": "veda-inbox-example",
   "version": "1.0.0",
-  "description": "Workflow designer and process manager for Veda platform",
+  "description": "Inbox app example for Veda platform",
   "type": "module",
   "scripts": {
     "build": "node build.mjs",
