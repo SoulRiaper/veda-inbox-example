@@ -1,15 +1,9 @@
-import { Component, html } from 'veda-client';
+import { Component, html, If } from 'veda-client';
 import { formatDate, formatInitials } from '../utils/format-helpers';
 import { stringToHslColor } from '../utils/avatar-color';
 
 export default class InboxCard extends Component(HTMLElement) {
   static tag = 'inbox-card';
-
-  constructor() {
-    super()
-
-    this.state.responsble = null
-  }
 
   get inbox() {
     return this.state.inbox;
@@ -77,11 +71,13 @@ export default class InboxCard extends Component(HTMLElement) {
         </div>
         
         <div class="inbox-card-actions">
-          <button class="inbox-card-btn inbox-card-btn--reply">
-            <span class="inbox-card-btn-label">
-              {this.inbox.toLabel()}
-            </span>
-          </button>
+          <${If} condition="{this.state.showDecision}">
+            <button class="inbox-card-btn inbox-card-btn--reply">
+              <span class="inbox-card-btn-label">
+                {this.inbox.toLabel()}
+              </span>
+            </button>
+          </${If}>
 
           <button class="inbox-card-btn inbox-card-btn--read">
             <span class="inbox-card-btn-label">

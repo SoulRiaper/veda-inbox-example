@@ -25,11 +25,15 @@ export default class InboxPage extends Component(HTMLElement) {
     return this.state.tabs.find(t => t.active);
   }
 
+  get isIncoming() {
+    return this.currentTab.id.includes('incoming')
+  }
+
   async connectedCallback() {
     await super.connectedCallback();
 
     this.effect(async() => {
-      const tag = this.currentTab.id.includes('incoming') ? 'v-wf:to' : 'v-wf:from';
+      const tag = this.isIncoming ? 'v-wf:to' : 'v-wf:from';
       const showCompleted = this.currentTab.id.includes('Completed') ? 'true' : 'false'
 
       const res = await Backend.query(`(('rdf:type'=='v-wf:DecisionForm') && ('v-wf:isCompleted'=='${showCompleted}') && ('${tag}'=='${Backend.user_uri}' ) )`, `'v-s:created' desc`);
@@ -87,7 +91,7 @@ export default class InboxPage extends Component(HTMLElement) {
 
           <${If} condition="{this.hasInbox}">
             <${Loop} items="{this.state.inboxes}" as="inbox" key="id">
-              <${InboxCard} :inbox="{inbox}"/>
+              <${InboxCard} :inbox="{inbox}" :show-decision="{this.isIncoming}"/>
             </${Loop}>
           </${If}>
         </div>
