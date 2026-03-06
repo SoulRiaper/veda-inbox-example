@@ -52,10 +52,6 @@ export default class InboxCard extends Component(HTMLElement) {
     }
   }
 
-  toggleCompleted(e) {
-    
-  }
-
   render() {
     return html`
       <div class="inbox-card">
